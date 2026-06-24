@@ -1,10 +1,7 @@
-// ===========================================================
-// تنظیمات ریپوی گیت‌هاب — این سه مقدار رو با اطلاعات ریپوی خودت پر کن
-// ===========================================================
 const GH_CONFIG = {
-  owner: "YOUR_GITHUB_USERNAME",   // یوزرنیم گیت‌هابت
-  repo: "YOUR_REPO_NAME",          // اسم ریپو
-  branch: "main",                  // اسم شاخه (معمولاً main)
-  dataPath: "data/packs.json",     // مسیر فایل اطلاعات پک‌ها — تغییر نده
-  uploadsFolder: "uploads"         // پوشه‌ای که فایل‌ها توش ذخیره می‌شن — تغییر نده
+  owner: "Artahdv",
+  repo: "bedwars-resourcepacks",
+  branch: "main",
+  dataPath: "data/packs.json",
+  uploadsFolder: "uploads"
 };
