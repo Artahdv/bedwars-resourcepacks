@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنل مدیریت — BedwarsPacks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="pixel-sword">
+      <span class="p1"></span><span class="p2"></span><span class="p3"></span>
+      <span class="p4"></span><span class="p5"></span><span class="p6"></span><span class="p7"></span>
+    </div>
+    <div>پنل مدیریت<small>BedwarsPacks</small></div>
+  </div>
+  <a class="admin-link" href="index.html">بازگشت به سایت</a>
+</header>
+
+<div class="admin-wrap">
+
+  <!-- ورود با توکن گیت‌هاب -->
+  <div class="admin-card" id="loginCard">
+    <h2>ورود مدیر</h2>
+    <p style="color:var(--muted); font-size:.85rem; margin-top:-8px;">
+      توکن دسترسی گیت‌هابت رو وارد کن (راهنمای ساختش در README.md هست).
+    </p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="token">GitHub Personal Access Token</label>
+        <input type="password" id="token" placeholder="ghp_..." required>
+      </div>
+      <div class="error-msg" id="loginError"></div>
+      <button class="btn-primary" type="submit">ورود</button>
+    </form>
+  </div>
+
+  <!-- پنل اصلی -->
+  <div class="admin-card" id="panelCard" style="display:none;">
+    <div class="logout-row">
+      <h2 style="margin:0;">افزودن ریسورس‌پک</h2>
+      <button id="logoutBtn">خروج</button>
+    </div>
+
+    <form id="uploadForm">
+      <div class="field">
+        <label for="title">عنوان</label>
+        <input type="text" id="title" required>
+      </div>
+      <div class="field">
+        <label for="category">دسته‌بندی</label>
+        <input type="text" id="category" list="catList" placeholder="مثلاً PvP" required>
+        <datalist id="catList">
+          <option value="بلوک‌ها"></option>
+          <option value="آیتم‌ها"></option>
+          <option value="PvP"></option>
+          <option value="FPS بوست"></option>
+          <option value="صدا"></option>
+          <option value="کامل"></option>
+        </datalist>
+      </div>
+      <div class="field">
+        <label for="description">توضیحات</label>
+        <textarea id="description"></textarea>
+      </div>
+      <div class="field">
+        <label for="packFile">فایل ریسورس‌پک (zip)</label>
+        <input type="file" id="packFile" accept=".zip" required>
+      </div>
+      <div class="field">
+        <label for="imageFile">تصویر بندانگشتی (اختیاری)</label>
+        <input type="file" id="imageFile" accept="image/*">
+      </div>
+
+      <div class="progress-track" id="progressTrack" style="display:none;">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="error-msg" id="uploadError"></div>
+      <div class="success-msg" id="uploadSuccess"></div>
+
+      <button class="btn-primary" id="submitBtn" type="submit">افزودن به فروشگاه</button>
+    </form>
+
+    <div class="admin-list" id="adminList"></div>
+  </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/github-api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
