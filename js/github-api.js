@@ -76,13 +76,15 @@ function fileToBase64(file){
   });
 }
 
-// تست معتبر بودن توکن + دسترسی نوشتن به همین ریپو
+// تست معتبر بودن توکن + دسترسی به همین ریپو
+// (به فیلد permissions تکیه نمی‌کنیم چون توکن‌های fine-grained همیشه برش نمی‌گردونن)
 async function ghVerifyToken(token){
   const res = await fetch(`${GH_API_ROOT}/repos/${GH_CONFIG.owner}/${GH_CONFIG.repo}`, { headers: ghHeaders(token) });
-  if (!res.ok) throw new Error("توکن نامعتبره یا به این ریپو دسترسی ندارد.");
-  const data = await res.json();
-  if (!data.permissions || !data.permissions.push){
-    throw new Error("این توکن دسترسی نوشتن (push) به ریپو ندارد.");
+  if (res.status === 401 || res.status === 403){
+    throw new Error("توکن نامعتبره یا منقضی شده.");
+  }
+  if (!res.ok){
+    throw new Error(`دسترسی به ریپو ممکن نشد (کد ${res.status}). owner/repo توی config.js رو چک کن.`);
   }
   return true;
 }
